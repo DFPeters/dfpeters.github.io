@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/Control.OSMGeocoder.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/Control.OSMGeocoder.js"></script>
+        <script src="data/Klimazonen_0.js"></script>
+        <script src="data/Stdte_1.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-5.13077064134,-80.3869180653],[-2.83675334581,-78.2109174826]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        function pop_Klimazonen_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['gridcode'] !== null ? Autolinker.link(String(feature.properties['gridcode'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sector'] !== null ? Autolinker.link(String(feature.properties['sector'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['provincia'] !== null ? Autolinker.link(String(feature.properties['provincia'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['region'] !== null ? Autolinker.link(String(feature.properties['region'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['nombre'] !== null ? Autolinker.link(String(feature.properties['nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fuente'] !== null ? Autolinker.link(String(feature.properties['fuente'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sector_ide'] !== null ? Autolinker.link(String(feature.properties['sector_ide'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['prov_ident'] !== null ? Autolinker.link(String(feature.properties['prov_ident'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['region_ide'] !== null ? Autolinker.link(String(feature.properties['region_ide'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['area_ha'] !== null ? Autolinker.link(String(feature.properties['area_ha'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Length'] !== null ? Autolinker.link(String(feature.properties['Shape_Length'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? Autolinker.link(String(feature.properties['Shape_Area'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Klimazonen_0_0(feature) {
+            switch(String(feature.properties['sector'])) {
+                case 'ABANICO DEL PASTAZA':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(211,229,95,1.0)',
+            }
+                    break;
+                case 'AGUA':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(114,133,132,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(165,191,221,1.0)',
+            }
+                    break;
+                case 'AGUARICO-PUTUMAYO-CAQUETA':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(100,147,217,1.0)',
+            }
+                    break;
+                case 'CATAMAYO-ALAMOR':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,192,106,1.0)',
+            }
+                    break;
+                case 'CHOCO ECUATORIAL':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(220,139,133,1.0)',
+            }
+                    break;
+                case 'COORDILLERAS AMAZONICAS':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,160,44,1.0)',
+            }
+                    break;
+                case 'CORDILLERA COSTERA DEL CHOCO':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(129,221,146,1.0)',
+            }
+                    break;
+                case 'CORDILLERA COSTERA DEL PACIFICO ECUATORIAL':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(111,217,89,1.0)',
+            }
+                    break;
+                case 'CORDILLERA OCCIDENTAL DE LOS ANDES':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(128,152,72,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,217,118,1.0)',
+            }
+                    break;
+                case 'JAMA-ZAPOTILLO':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,0,1.0)',
+            }
+                    break;
+                case 'NAPO-CURARAY':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,101,12,1.0)',
+            }
+                    break;
+                case 'NORTE DE LA CORDILLERA ORIENTAL DE LOS ANDES':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(20,221,198,1.0)',
+            }
+                    break;
+                case 'PARAMO':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(128,152,72,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,221,105,1.0)',
+            }
+                    break;
+                case 'SUR DE LA CORDILLERA ORIENTAL DE LOS ANDES':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(192,240,140,1.0)',
+            }
+                    break;
+                case 'TIGRE-PASTAZA':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(86,182,214,1.0)',
+            }
+                    break;
+                case 'VALLES':
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,239,198,1.0)',
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Klimazonen_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(142,102,235,1.0)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Klimazonen_0');
+        map.getPane('pane_Klimazonen_0').style.zIndex = 400;
+        map.getPane('pane_Klimazonen_0').style['mix-blend-mode'] = 'normal';
+        var layer_Klimazonen_0 = new L.geoJson(json_Klimazonen_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Klimazonen_0',
+            onEachFeature: pop_Klimazonen_0,
+            style: style_Klimazonen_0_0,
+        });
+        bounds_group.addLayer(layer_Klimazonen_0);
+        map.addLayer(layer_Klimazonen_0);
+        function pop_Stdte_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Id'] !== null ? Autolinker.link(String(feature.properties['Id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Stdte_1_0() {
+            return {
+                pane: 'pane_Stdte_1',
+                radius: 4.4,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+            }
+        }
+        map.createPane('pane_Stdte_1');
+        map.getPane('pane_Stdte_1').style.zIndex = 401;
+        map.getPane('pane_Stdte_1').style['mix-blend-mode'] = 'normal';
+        var layer_Stdte_1 = new L.geoJson(json_Stdte_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Stdte_1',
+            onEachFeature: pop_Stdte_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Stdte_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Stdte_1);
+        map.addLayer(layer_Stdte_1);
+        var osmGeocoder = new L.Control.OSMGeocoder({
+            collapsed: false,
+            position: 'topright',
+            text: 'Search',
+        });
+        osmGeocoder.addTo(map);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/Stdte_1.png" /> Städte': layer_Stdte_1,'Klimazonen<br /><table><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_ABANICODELPASTAZA0.png" /></td><td>ABANICO DEL PASTAZA</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_Wasser1.png" /></td><td>Wasser</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_AGUARICOPUTUMAYOCAQUETA2.png" /></td><td>AGUARICO-PUTUMAYO-CAQUETA</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_TieflandTrocken3.png" /></td><td>Tiefland (Trocken)</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_CHOCOECUATORIAL4.png" /></td><td>CHOCO ECUATORIAL</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_Amazonas5.png" /></td><td>Amazonas</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_CORDILLERACOSTERADELCHOCO6.png" /></td><td>CORDILLERA COSTERA DEL CHOCO</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_HochlandKstenexposition7.png" /></td><td>Hochland Küstenexposition</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_HochlandKstenexposition8.png" /></td><td>Hochland Küstenexposition</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_KsteTrocken9.png" /></td><td>Küste (Trocken)</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_NAPOCURARAY10.png" /></td><td>NAPO-CURARAY</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_NORTEDELACORDILLERAORIENTALDELOSANDES11.png" /></td><td>NORTE DE LA CORDILLERA ORIENTAL DE LOS ANDES</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_HochlandParamo12.png" /></td><td>Hochland Paramo</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_HochlandAmazonasexposition13.png" /></td><td>Hochland Amazonasexposition</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_TIGREPASTAZA14.png" /></td><td>TIGRE-PASTAZA</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_Tiefland15.png" /></td><td>Tiefland</td></tr><tr><td style="text-align: center;"><img src="legend/Klimazonen_0_16.png" /></td><td></td></tr></table>': layer_Klimazonen_0,}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_Stdte_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Id'] !== null?String('<div style="color: #000000; font-size: 8pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Id']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Stdte_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_Stdte_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Stdte_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Stdte_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Stdte_1]);
+        });
+        </script>
+    </body>
+</html>
